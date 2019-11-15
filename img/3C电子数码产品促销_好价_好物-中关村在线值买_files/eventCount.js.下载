@@ -1,0 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+;(function(window, document, $){
+
+    window.ZUI = typeof window.ZUI === 'undefined' ? {} : window.ZUI;
+
+    function getIPCK(){
+        var ip_ck;
+        if(document.cookie && document.cookie.match(/ip_ck=([^;$]+)/)){
+            ip_ck = document.cookie.match(/ip_ck=([^;$]+)/)[1];
+        }else{
+            ip_ck = '######IP_CK#####';
+        };
+        return ip_ck;
+    }
+
+    window.ZUI.Count = (function () {
+
+        return {
+
+            pvStat: function(url){
+                window._zpv_document_refer = url;
+                pv_d()
+            },
+
+            eventCount: function(eventName, url){
+                var ip_ck = getIPCK();
+                var URL = typeof(url) === 'undefined' ? document.URL : url
+                var countUrl = "http://pvtest.zol.com.cn/images/pvevents.gif?t="+new Date().getTime()+"&event="+eventName+"&ip_ck="+ip_ck+"&url=" + URL;
+                //创建一个Image对象，实现图片的预下载
+                var img = new Image();
+                img.src = countUrl;
+            },
+
+            eventCountWithParams : function(eventName, params, url){
+                var ip_ck = getIPCK();
+                var URL = typeof(url) === 'undefined' ? document.URL : url
+                var paramsArr = []
+                for(var key in params){
+                    if (params.hasOwnProperty(key)) {
+                        var str = key + '=' + params[key]
+                        paramsArr.push(str)
+                    }
+                }
+                var countUrl = "http://pvtest.zol.com.cn/images/pvevents.gif?t="+ new Date().getTime() +"&event="+ eventName +"&"+ paramsArr.join('&') + "&ip_ck="+ ip_ck +"&url=" + URL;
+                //创建一个Image对象，实现图片的预下载
+                var img = new Image();
+                img.src = countUrl;
+            }
+        }
+    })()
+
+})(window, document, window.$ || window.jQuery);
+
+$(document).ready(function () {
+$('body').on('click', '[data-event]', function(e){
+    var eventName = $(this).attr('data-event');
+    if(!eventName || eventName == '' || typeof eventName == 'undefined') return;
+    window.ZUI.Count.eventCount(eventName);
+});
+})

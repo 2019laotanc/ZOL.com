@@ -1,0 +1,85 @@
+/**
+ * js获取登录状态
+ * @author rww
+ * @date 2019/04/18
+ */
+;(function($) {
+    var defaultConfig   = {//默认配置，配置中的键才能使用
+        callbackfun:true,
+        ajaxUrl:true
+    };
+
+    function Login(options) {
+        this.ajaxUrl    ='http://www.zol.com/index.php?c=Content_Ajax_CheckLogin&a=checklogin';
+
+        for (var x in options) {
+            if(defaultConfig[x]) {
+                this[x] = options[x];   //分配属性
+            }
+        }
+    }
+
+    Login.prototype = {
+        /**
+         * 请求接口获取用户信息
+         */
+        init : function () {    //启动
+            var self = this;
+            //查看是否有userid
+            if (self.getCookie('zol_userid')) {
+                $.ajax({
+                    type:'POST',
+                    dataType:'jsonp',
+                    url:self.ajaxUrl,
+                    jsonp:"jsoncallback",
+                    success:function (data) {
+                        self.callback(data);
+                    }
+                });
+            }else {
+                self.logincallback({status:false});
+            }
+        },
+        callback : function (data) {    //基础回调
+            if (this.callbackfun) {
+                this.callbackfun(data);
+            } else {
+                this.logincallback(data);
+            }
+        },
+        logincallback:function (data) {//默认回调
+            var loginStr = '';
+            var nowT     =  (new Date()).getTime()/1000;
+            if (data.status){
+                loginStr += '<div class="login-exit">';
+                loginStr += '<a class="h-user-name" href="http://my.zol.com" target="_blank">'+data.userid+'</a>';
+                loginStr += '<a class="line" target="_self" href="https://login.zol.com/index.php?a=LoginOut&t='+nowT+'">退出</a>';
+                loginStr += '</div>';
+            } else {
+                loginStr += '<div class="login-start">';
+                loginStr += '<a href="https://login.zol.com/" target="_self" class="mark">登录</a> <a href="https://login.zol.com/index.php?c=Default&amp;a=Register" target="_self" class="line">注册</a>';
+                loginStr += '</div>';
+            }
+            $(".login").html(loginStr);
+        },
+        getCookie : function (cookieName) {
+            var cookieStr = document.cookie;
+            var cookieStart = cookieStr.indexOf(decodeURIComponent(cookieName.trim()) + '=');
+            if (cookieStart == -1) {
+                return null;
+            }
+            cookieStart = cookieStart + (decodeURIComponent(cookieName.trim()) + '=').length;
+            var cookieEnd = cookieStr.indexOf(';',cookieStart);
+            if (cookieEnd == -1) {
+                cookieEnd = cookieStr.length;
+            }
+            var cookieValue = cookieStr.substring(cookieStart ,cookieEnd);
+            return cookieValue;
+        },
+
+    }
+    typeof(loginConfig) == "undefined" ? loginConfig = {} : '';
+    var loginObj = new Login(loginConfig);
+    loginObj.init();
+})(window.$ || window.jquery);
+

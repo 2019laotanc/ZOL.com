@@ -1,0 +1,15 @@
+require.config({
+    paths:{
+        jquery:"../../node_modules/jquery/dist/jquery",
+        logon:"./lib/logon",
+        md5:"./lib/jquery.md5"
+    },
+    shim:{
+        md5:['jquery']
+    }
+});
+require(['jquery','logon'],function($,logon){
+    logon.addItem();
+    logon.btn1();
+    logon.regEv('.reg');
+});

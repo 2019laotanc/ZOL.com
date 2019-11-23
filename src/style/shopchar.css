@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 12px/1.5 Arial;
+  color: #333;
+}
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+header {
+  position: relative;
+  z-index: 997;
+  height: 29px;
+  font: 12px/29px arial;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e6e6e6;
+}
+header a {
+  color: #666;
+  text-decoration: none;
+}
+header a:hover {
+  color: #c00;
+  text-decoration: underline;
+}
+header .top {
+  position: relative;
+}
+header .top-left {
+  color: #666;
+  text-decoration: none;
+}
+header .top-left span {
+  margin-right: 20px;
+}
+header .top-left span:nth-child(2) a {
+  color: #36c;
+}
+header .top-right {
+  list-style: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+header .top-right li {
+  float: left;
+  padding: 0 10px;
+}
+main .main-1 {
+  height: 60px;
+  padding: 30px 0;
+}
+main .main-1 .main-1-right {
+  width: 520px;
+  height: 38px;
+  padding-top: 2px;
+  float: right;
+}
+main .main-1 .main-1-right ul {
+  list-style: none;
+}
+main .main-1 .main-1-right ul li {
+  font: 14px/36px "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1";
+  text-align: center;
+  line-height: 36px;
+  float: left;
+  background: url("../img/shopchar/箭头.png") no-repeat;
+  background-position: 100% -74px;
+  background-color: #e6e6e6;
+  width: 90px;
+  height: 36px;
+  padding: 0 14px 0 0;
+}
+main .main-1 .main-1-right ul li:nth-child(1) {
+  width: 104px;
+  color: #fff;
+  background: url(../img/shopchar/箭头.png) no-repeat;
+  background-position: 100% -37px;
+  background-color: #e02d2d;
+}
+main .main-1 .main-1-right ul li:nth-last-child(1) {
+  padding: 0;
+  background-image: none;
+}
+main .main-2 .main2-top {
+  height: 36px;
+  background: #f5f5f5;
+  border-top: 2px solid #e02d2d;
+  line-height: 36px;
+  text-align: center;
+}
+main .main-2 .main2-top .tou {
+  list-style: none;
+}
+main .main-2 .main2-top .tou li {
+  float: left;
+  padding: 0 37px;
+}
+main .main-2 .main2-top .tou li:nth-child(1) {
+  padding: 0;
+  width: 398px;
+}
+main .con {
+  margin-top: 10px;
+  width: 100%;
+  height: 129px;
+  border: 1px solid #e3e3e3 !important;
+  position: relative;
+}
+main .con .con-1 {
+  display: inline-block;
+  width: 397px;
+  padding: 10px 10px 10px 12px;
+}
+main .con .con-1 div {
+  display: inline-block;
+}
+main .con .con-1 .kuang {
+  width: 15px;
+  height: 15px;
+}
+main .con .con-1 .kuang input {
+  margin-bottom: 67px;
+  vertical-align: middle;
+}
+main .con .con-1 .smallimg {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #e3e3e3;
+}
+main .con .con-1 .smallimg img {
+  width: 80px;
+  height: 80px;
+}
+main .con .con-1 .direction {
+  display: block;
+  width: 285px;
+  height: 108px;
+  margin-left: 10px;
+  float: right;
+}
+main .con .con-1 .direction p {
+  width: 240px;
+  height: 40px;
+  line-height: 20px;
+  overflow: hidden;
+  display: inline-block;
+  color: #666;
+}
+main .con .con-1 .direction p:nth-child(1) {
+  color: #36c;
+  margin-bottom: 20px;
+}
+main .con .con-1 .direction p:nth-child(1):hover {
+  color: yellowgreen;
+  text-decoration: underline;
+}
+main .con .con-2 {
+  position: absolute;
+  top: 50px;
+  left: 445px;
+  display: inline-block;
+}
+main .con .con-3 {
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 562px;
+}
+main .con .con-4 {
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 674px;
+}
+main .con .con-5 {
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 775px;
+  color: red;
+}
+main .con .con-6 {
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 875px;
+  color: #36c;
+}
+main .con .con-6 p:hover {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+footer {
+  margin-top: 10px;
+  padding: 0 10px 0 0;
+  height: 52px;
+  line-height: 52px;
+  text-align: right;
+}
+footer span {
+  color: #666;
+}
+footer span:nth-child(2) {
+  color: #ff0000;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: verdana;
+}
+.order-foot {
+  position: relative;
+  padding: 0 0 0 12px;
+  height: 33px;
+  border: 1px solid #e3e3e3;
+  line-height: 33px;
+}
+.order-foot label a {
+  text-decoration: none;
+}
+.order-foot label a:nth-child(1) {
+  margin-right: 700px;
+}
+.accounting-btn {
+  width: 130px;
+  height: 35px;
+  font-size: 18px;
+  color: #fff;
+  background: #F49400;
+  outline: none;
+}

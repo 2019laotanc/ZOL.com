@@ -1,0 +1,11 @@
+require.config({
+    paths:{
+        jquery:"../../node_modules/jquery/dist/jquery",
+        shopchar:"./lib/shopchar",
+        cookie:"../js/lib/cookie"
+    },
+    shim:{}
+});
+require(['jquery','shopchar'],function($,shopchar){
+    shopchar.render();
+});
